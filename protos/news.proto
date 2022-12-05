@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "github.com/jonator8/grpc-api/protos";
+
+package news.api;
+
+service NewsApi {
+  rpc GetNews(GetNewsRequest) returns (NewsResponse) {}
+
+  rpc GetNew(GetNewRequest) returns (New) {}
+}
+
+message New {
+  string id = 1;
+  string title = 2;
+  string text = 3;
+}
+
+message NewsResponse{
+  repeated New data = 1;
+}
+
+message GetNewsRequest {}
+
+message GetNewRequest {
+  string id = 1;
+}
